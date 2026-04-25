@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>OnScala. | Scale to 1:1</title>
+    <meta name="description" content="Aselsan, Havelsan ve ASFAT gibi kurumlara askeri maket, fuar modeli ve 1:1 ölçekli savunma sanayii prototipleri üretiyoruz.">
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -109,7 +110,6 @@
             background-clip: text;
         }
 
-        /* Background grid with perspective */
         .bg-grid-3d {
             background-image: 
                 linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
@@ -127,17 +127,11 @@
             -webkit-mask-image: linear-gradient(to bottom, black 20%, transparent 80%);
         }
 
-        /* Taktiksel UI Çizgileri */
-        .tech-corners {
-            position: relative;
-        }
-        .tech-corners::before, .tech-corners::after {
-            content: ''; position: absolute; width: 20px; height: 20px; border-color: rgba(34, 197, 94, 0.5); border-style: solid;
-        }
+        .tech-corners { position: relative; }
+        .tech-corners::before, .tech-corners::after { content: ''; position: absolute; width: 20px; height: 20px; border-color: rgba(34, 197, 94, 0.5); border-style: solid; }
         .tech-corners::before { top: 0; left: 0; border-width: 2px 0 0 2px; }
         .tech-corners::after { bottom: 0; right: 0; border-width: 0 2px 2px 0; }
 
-        /* Custom Scrollbar */
         ::-webkit-scrollbar { width: 6px; }
         ::-webkit-scrollbar-track { background: #030712; }
         ::-webkit-scrollbar-thumb { background: #1f2937; border-radius: 10px; }
@@ -146,10 +140,10 @@
         .faq-content {
             max-height: 0;
             overflow: hidden;
-            transition: max-height 0.4s ease-in-out, padding 0.4s ease-in-out;
+            transition: max-height 0.5s ease-in-out, padding 0.5s ease-in-out;
         }
         .faq-item.active .faq-content {
-            max-height: 500px;
+            max-height: 1000px;
         }
         .faq-item.active .faq-icon {
             transform: rotate(180deg);
@@ -170,7 +164,6 @@
     <header id="navbar" class="fixed top-4 left-0 right-0 z-50 px-4 transition-all duration-300 flex justify-center">
         <div class="glass-2026 !rounded-full px-6 py-3 flex justify-between items-center w-full max-w-7xl">
             
-            <!-- Logo & Brand -->
             <a href="#" class="flex items-center gap-3 cursor-pointer group">
                 <div class="flex flex-col justify-center">
                     <h1 class="text-2xl md:text-3xl font-black font-display tracking-tight text-white leading-none group-hover:text-brand-primary transition-colors">OnScala.</h1>
@@ -184,12 +177,11 @@
                 </div>
             </a>
 
-            <!-- Desktop Menu -->
             <nav class="hidden lg:flex space-x-8 text-xs font-bold text-slate-400 uppercase tracking-widest font-mono">
-                <a href="#modeller" class="hover:text-brand-primary transition-colors relative group" data-i18n="nav.models">Modeller
+                <a href="#hakkimizda" class="hover:text-brand-primary transition-colors relative group" data-i18n="nav.about">Hakkımızda
                     <span class="absolute -bottom-4 left-1/2 w-0 h-0.5 bg-brand-primary transition-all duration-300 group-hover:w-full group-hover:left-0"></span>
                 </a>
-                <a href="#fuar" class="hover:text-brand-primary transition-colors relative group" data-i18n="nav.exhibition">Fuar Çözümleri
+                <a href="#modeller" class="hover:text-brand-primary transition-colors relative group" data-i18n="nav.models">Modeller
                     <span class="absolute -bottom-4 left-1/2 w-0 h-0.5 bg-brand-primary transition-all duration-300 group-hover:w-full group-hover:left-0"></span>
                 </a>
                 <a href="#muhendislik" class="hover:text-brand-primary transition-colors relative group" data-i18n="nav.engineering">Mühendislik
@@ -200,7 +192,6 @@
                 </a>
             </nav>
 
-            <!-- Actions -->
             <div class="hidden lg:flex items-center gap-4">
                 <button onclick="toggleLang()" class="flex items-center gap-1 text-slate-400 hover:text-white font-mono text-xs tracking-widest px-2 transition-colors">
                     <i class="fas fa-globe"></i> <span id="lang-btn">EN</span>
@@ -213,17 +204,15 @@
                 </button>
             </div>
 
-            <!-- Mobile Toggle -->
             <button class="lg:hidden text-brand-primary p-2" onclick="toggleMobileMenu()">
                 <i class="fas fa-bars text-2xl" id="mobile-icon"></i>
             </button>
         </div>
 
-        <!-- Mobile Menu Overlay -->
         <div id="mobile-menu" class="hidden absolute top-[110%] left-4 right-4 glass-2026 p-6 flex-col gap-6 animate-in slide-in-from-top-4">
             <div class="flex flex-col gap-4 font-mono font-bold text-sm uppercase tracking-widest">
+                <a href="#hakkimizda" onclick="toggleMobileMenu()" class="text-slate-300 hover:text-brand-primary" data-i18n="nav.about">Hakkımızda</a>
                 <a href="#modeller" onclick="toggleMobileMenu()" class="text-slate-300 hover:text-brand-primary" data-i18n="nav.models">Modeller</a>
-                <a href="#fuar" onclick="toggleMobileMenu()" class="text-slate-300 hover:text-brand-primary" data-i18n="nav.exhibition">Fuar Çözümleri</a>
                 <a href="#muhendislik" onclick="toggleMobileMenu()" class="text-slate-300 hover:text-brand-primary" data-i18n="nav.engineering">Mühendislik</a>
                 <a href="#sss" onclick="toggleMobileMenu()" class="text-slate-300 hover:text-brand-primary" data-i18n="nav.faq">SSS</a>
             </div>
@@ -272,7 +261,6 @@
                     </div>
                 </div>
 
-                <!-- Technical CAD 3D Display -->
                 <div class="lg:w-1/2 w-full relative z-10 mt-12 lg:mt-0">
                     <div class="glass-2026 p-2 md:p-4 tech-corners aspect-square md:aspect-video lg:aspect-square">
                         <div class="absolute top-0 left-0 w-full h-1 bg-brand-primary/50 shadow-[0_0_20px_rgba(34,197,94,0.8)] animate-scan z-20"></div>
@@ -280,7 +268,6 @@
                         <div class="w-full h-full rounded-xl bg-brand-bg relative flex items-center justify-center overflow-hidden border border-white/5">
                             <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(34,197,94,0.05)_0,transparent_60%)]"></div>
                             
-                            <!-- ThreeJS Container -->
                             <div id="three-container" class="absolute inset-0 z-10"></div>
                             
                             <div class="absolute bottom-6 left-0 right-0 z-20 text-center pointer-events-none">
@@ -289,7 +276,6 @@
                                 </p>
                             </div>
 
-                            <!-- HUD Elements -->
                             <div class="absolute top-4 right-4 flex flex-col gap-2 z-20 pointer-events-none">
                                 <div class="flex items-center gap-2"><div class="h-1 w-8 bg-slate-800"><div class="h-full bg-brand-primary w-[75%]"></div></div><span class="text-[8px] text-brand-primary font-mono">SYS_01</span></div>
                                 <div class="flex items-center gap-2"><div class="h-1 w-8 bg-slate-800"><div class="h-full bg-brand-primary w-[40%]"></div></div><span class="text-[8px] text-brand-primary font-mono">SYS_02</span></div>
@@ -297,7 +283,6 @@
                         </div>
                     </div>
                     
-                    <!-- Stats Overlays -->
                     <div class="absolute -bottom-6 -left-4 md:-bottom-8 md:-left-8 glass-2026 p-4 md:p-6 flex gap-6 md:gap-8 z-30 border-brand-primary/30">
                         <div>
                             <div class="text-slate-400 text-[10px] md:text-xs font-mono uppercase mb-1" data-i18n="hero.tolerance">Tolerans</div>
@@ -323,12 +308,10 @@
             
             <div class="relative flex overflow-x-hidden group z-10">
                 <div class="flex w-max animate-marquee space-x-16 md:space-x-24 items-center px-4">
-                    <!-- Set 1 -->
                     <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/ASELSAN_logo.svg/3840px-ASELSAN_logo.svg.png" alt="ASELSAN" class="h-8 md:h-10 object-contain brightness-0 invert opacity-40 hover:opacity-100 transition-opacity">
                     <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/HAVELSAN_logo.svg/2560px-HAVELSAN_logo.svg.png" alt="HAVELSAN" class="h-6 md:h-8 object-contain brightness-0 invert opacity-40 hover:opacity-100 transition-opacity">
                     <img src="https://static.hvkk.tsk.tr/StaticImages/logo/hvkk-header-logo-tr-white.png" alt="HAVA KUVVETLERİ" class="h-10 md:h-12 object-contain opacity-40 hover:opacity-100 transition-opacity">
                     <img src="https://upload.wikimedia.org/wikipedia/tr/1/11/AsfatLogo.png" alt="ASFAT" class="h-8 md:h-10 object-contain brightness-0 invert opacity-40 hover:opacity-100 transition-opacity">
-                    <!-- Set 2 -->
                     <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/ASELSAN_logo.svg/3840px-ASELSAN_logo.svg.png" alt="ASELSAN" class="h-8 md:h-10 object-contain brightness-0 invert opacity-40 hover:opacity-100 transition-opacity">
                     <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/HAVELSAN_logo.svg/2560px-HAVELSAN_logo.svg.png" alt="HAVELSAN" class="h-6 md:h-8 object-contain brightness-0 invert opacity-40 hover:opacity-100 transition-opacity">
                     <img src="https://static.hvkk.tsk.tr/StaticImages/logo/hvkk-header-logo-tr-white.png" alt="HAVA KUVVETLERİ" class="h-10 md:h-12 object-contain opacity-40 hover:opacity-100 transition-opacity">
@@ -337,12 +320,72 @@
             </div>
         </section>
 
+        <!-- About Us, Mission & Vision -->
+        <section id="hakkimizda" class="relative max-w-7xl mx-auto px-4 sm:px-6">
+            <div class="flex flex-col lg:flex-row gap-12 items-center">
+                <!-- Image Side -->
+                <div class="lg:w-5/12 relative w-full">
+                    <div class="glass-2026 p-6 md:p-12 aspect-square md:aspect-auto md:h-[500px] flex flex-col justify-center relative overflow-hidden group">
+                        <div class="absolute top-0 right-0 w-full h-full bg-gradient-to-bl from-brand-primary/20 to-transparent pointer-events-none"></div>
+                        <i class="fas fa-layer-group text-[120px] text-white/5 absolute -bottom-10 -left-10 group-hover:text-brand-primary/10 transition-all duration-500 transform group-hover:scale-110"></i>
+                        <h2 class="text-7xl md:text-8xl font-black font-display text-transparent bg-clip-text bg-gradient-to-b from-white to-white/10 opacity-50 mb-4">10+</h2>
+                        <h3 class="text-2xl md:text-3xl font-display font-bold text-white mb-2" data-i18n="about.experience">Yıllık Derin Tecrübe</h3>
+                        <p class="text-brand-primary font-mono text-sm tracking-widest" data-i18n="about.satisfaction">%100 Müşteri Memnuniyeti</p>
+                    </div>
+                </div>
+
+                <!-- Content Side -->
+                <div class="lg:w-7/12 space-y-8">
+                    <div>
+                        <h3 class="text-brand-primary font-mono text-xs tracking-[0.3em] uppercase mb-3 flex items-center gap-2">
+                            <i class="fas fa-fingerprint"></i> <span data-i18n="about.tag">Hakkımızda</span>
+                        </h3>
+                        <h2 class="text-4xl md:text-5xl font-display font-bold text-white tracking-tight mb-6" data-i18n="about.title">Mühendisliğin Sanatla Buluştuğu Nokta.</h2>
+                        <div class="space-y-4 text-slate-400 font-light leading-relaxed">
+                            <p data-i18n="about.p1">OnScala, savunma sanayii ve endüstriyel platformlar için yüksek hassasiyetli maket ve prototip üretimi yapan, stratejik bir mühendislik ve tasarım merkezidir. Askeri standartlara uygun, kapalı devre ağlarda yürüttüğümüz şeffaf ve güvenilir üretim altyapımızla sektörün öncülerine hizmet veriyoruz.</p>
+                            <p data-i18n="about.p2">Gerçek mühendislik verilerini (CAD), sanatsal bir dokunuşla fiziksel objelere dönüştürüyor, global vitrinlerde gücünüzü 1:1 ölçeğe kadar eksiksiz temsil etmenizi sağlıyoruz.</p>
+                        </div>
+                    </div>
+
+                    <div class="grid sm:grid-cols-2 gap-6 pt-6 border-t border-white/10">
+                        <div class="glass-2026 p-6 !border-white/5 hover:border-brand-secondary/50">
+                            <i class="fas fa-bullseye text-2xl text-brand-secondary mb-4"></i>
+                            <h4 class="text-xl font-bold text-white mb-2 font-display" data-i18n="about.mission.title">Misyonumuz</h4>
+                            <p class="text-xs text-slate-400 font-light leading-relaxed" data-i18n="about.mission.desc">Mühendislik verilerini estetikle harmanlayarak, müşterilerimizin global arenadaki temsil gücünü maksimize eden, kusursuz ve etkileyici model çözümleri sunmak.</p>
+                        </div>
+                        <div class="glass-2026 p-6 !border-white/5 hover:border-brand-primary/50">
+                            <i class="fas fa-eye text-2xl text-brand-primary mb-4"></i>
+                            <h4 class="text-xl font-bold text-white mb-2 font-display" data-i18n="about.vision.title">Vizyonumuz</h4>
+                            <p class="text-xs text-slate-400 font-light leading-relaxed" data-i18n="about.vision.desc">Savunma sanayii prototipleme ve maket üretiminde, yenilikçi teknolojilerimiz ve tavizsiz kalite anlayışımızla dünyada akla gelen ilk referans noktası olmak.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Why Us Section -->
+        <section class="max-w-7xl mx-auto px-4 sm:px-6 relative border-t border-white/5 pt-32">
+            <div class="flex flex-col lg:flex-row gap-8 items-end mb-12">
+                <div class="lg:w-1/2">
+                    <h3 class="text-brand-primary font-mono text-xs tracking-[0.3em] uppercase mb-3 flex items-center gap-2">
+                        <i class="fas fa-crosshairs"></i> <span data-i18n="whyUs.tag">FARKIMIZ</span>
+                    </h3>
+                    <h2 class="text-4xl md:text-5xl font-display font-bold text-white tracking-tight" data-i18n="whyUs.title">Neden Bizimle Çalışmalısınız?</h2>
+                </div>
+                <div class="lg:w-1/2 text-sm text-slate-400 font-light border-l-2 border-slate-800 pl-4 md:pl-6" id="why-us-sub">
+                    Sadece bir maket üreticisi değil, projelerinizin lansman sürecindeki en güvenilir mühendislik ve stratejik partneriniziz.
+                </div>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6" id="whyus-container">
+                <!-- Cards injected via JS -->
+            </div>
+        </section>
+
         <!-- Interactive Showcase -->
         <section id="modeller" class="relative max-w-7xl mx-auto px-4 sm:px-6">
-            <div class="mb-12">
-                <h3 class="text-brand-primary font-mono text-xs tracking-[0.3em] uppercase mb-3 flex items-center gap-2">
-                    <i class="fas fa-bolt"></i> <span data-i18n="showcase.tag">Platform Çözümleri</span>
-                </h3>
+            <div class="mb-12 text-center">
+                <h3 class="text-brand-primary font-mono text-xs tracking-[0.3em] uppercase mb-3"><i class="fas fa-bolt"></i> <span data-i18n="showcase.tag">Platform Çözümleri</span></h3>
                 <h2 class="text-4xl md:text-5xl font-display font-bold text-white tracking-tight text-glow" data-i18n="showcase.title">Hizmet Ettiğimiz Sektörler</h2>
             </div>
 
@@ -378,7 +421,6 @@
                 <h3 class="text-brand-primary font-mono text-xs tracking-[0.3em] uppercase mb-3" data-i18n="pipeline.tag">Üretim Prosesi</h3>
                 <h2 class="text-4xl md:text-5xl font-display font-bold text-white tracking-tight text-glow" data-i18n="pipeline.title">Veriden Fiziksel Gerçekliğe</h2>
             </div>
-
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 relative" id="pipeline-container">
                 <!-- Pipeline steps injected via JS -->
             </div>
@@ -392,11 +434,9 @@
                     <i class="fas fa-award absolute -bottom-10 -right-10 text-[180px] text-white/5 group-hover:text-brand-primary/10 transition-colors"></i>
                     <div class="relative z-10">
                         <div class="inline-block px-3 py-1 bg-brand-primary/10 text-brand-primary rounded font-mono text-[10px] font-bold uppercase tracking-widest mb-6" id="bento-fuar-tag">Kurumsal Temsil</div>
-                        <h3 class="text-3xl font-display font-bold text-white mb-4" id="bento-fuar-title">Fuar Alanınızı Komuta Merkezine Çevirin.</h3>
+                        <h3 class="text-3xl md:text-4xl font-display font-bold text-white mb-4" id="bento-fuar-title">Fuar Alanınızı Komuta Merkezine Çevirin.</h3>
                         <p class="text-slate-400 font-light mb-8" id="bento-fuar-desc">IDEF, SAHA EXPO gibi global fuarlarda ziyaretçileri büyüleyin. 1:1 ölçekli mock-uplardan, kesit modellere kadar anahtar teslim çözümler.</p>
-                        <ul class="space-y-3 mb-8" id="bento-fuar-items">
-                            <!-- Items via JS -->
-                        </ul>
+                        <ul class="space-y-3 mb-8" id="bento-fuar-items"></ul>
                     </div>
                 </div>
 
@@ -405,42 +445,24 @@
                     <i class="fas fa-box-open absolute -bottom-10 -right-10 text-[180px] text-white/5 group-hover:text-brand-secondary/10 transition-colors"></i>
                     <div class="relative z-10">
                         <div class="inline-block px-3 py-1 bg-brand-secondary/10 text-brand-secondary rounded font-mono text-[10px] font-bold uppercase tracking-widest mb-6" id="bento-promo-tag">VIP & Promosyon</div>
-                        <h3 class="text-3xl font-display font-bold text-white mb-4" id="bento-promo-title">Akılda Kalıcı Taktiksel Hediyeler.</h3>
+                        <h3 class="text-3xl md:text-4xl font-display font-bold text-white mb-4" id="bento-promo-title">Akılda Kalıcı Taktiksel Hediyeler.</h3>
                         <p class="text-slate-400 font-light mb-8" id="bento-promo-desc">Bakanlık yetkilileri veya değerli partnerleriniz için özel tasarım masaüstü maketler. Ahşap ve metal kaideli şık sunumlar.</p>
-                        <ul class="space-y-3 mb-8" id="bento-promo-items">
-                            <!-- Items via JS -->
-                        </ul>
+                        <ul class="space-y-3 mb-8" id="bento-promo-items"></ul>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Why Us -->
-        <section class="max-w-7xl mx-auto px-4 sm:px-6 relative">
-            <div class="flex flex-col lg:flex-row gap-8 items-end mb-12">
-                <div class="lg:w-1/2">
-                    <h3 class="text-brand-primary font-mono text-xs tracking-[0.3em] uppercase mb-3 flex items-center gap-2">
-                        <i class="fas fa-crosshairs"></i> <span data-i18n="whyUs.tag">FARKIMIZ</span>
-                    </h3>
-                    <h2 class="text-4xl font-display font-bold text-white tracking-tight" data-i18n="whyUs.title">Neden Bizimle Çalışmalısınız?</h2>
-                </div>
-                <div class="lg:w-1/2 text-sm text-slate-400 font-light border-l-2 border-slate-800 pl-4" id="why-us-sub">
-                    Sadece bir maket üreticisi değil, projelerinizin lansman sürecindeki en güvenilir mühendislik ve stratejik partneriniziz.
-                </div>
-            </div>
-
-            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6" id="whyus-container">
-                <!-- Cards injected via JS -->
-            </div>
-        </section>
-
-        <!-- FAQ -->
-        <section id="sss" class="max-w-4xl mx-auto px-4 sm:px-6">
+        <!-- Detailed FAQ (20 Questions) -->
+        <section id="sss" class="max-w-7xl mx-auto px-4 sm:px-6">
             <div class="text-center mb-16">
                 <h3 class="text-brand-primary font-mono text-xs tracking-[0.3em] uppercase mb-3" data-i18n="faq.tag">Bilgi Bankası & Güvenlik</h3>
-                <h2 class="text-4xl font-display font-bold text-white tracking-tight text-glow" data-i18n="faq.title">Sıkça Sorulan Sorular</h2>
+                <h2 class="text-4xl md:text-5xl font-display font-bold text-white tracking-tight text-glow" data-i18n="faq.title">Sıkça Sorulan Sorular</h2>
+                <p class="text-slate-400 font-light mt-4 max-w-2xl mx-auto" data-i18n="faq.desc">Tüm süreçlerimiz hakkında detaylı bilgiye ve gizlilik prensiplerimize buradan ulaşabilirsiniz.</p>
             </div>
-            <div class="space-y-4" id="faq-container">
+            
+            <!-- 2-column Grid for FAQs on Large Screens -->
+            <div class="grid lg:grid-cols-2 gap-4 items-start" id="faq-container">
                 <!-- FAQ Items injected via JS -->
             </div>
         </section>
@@ -458,7 +480,7 @@
                 </p>
                 <div class="flex flex-col sm:flex-row justify-center gap-4">
                     <button onclick="openModal()" class="px-8 py-4 bg-brand-primary text-black rounded-full font-bold text-sm uppercase tracking-widest hover:scale-105 transition-transform" id="cta-btn1">Üretim Talebi Oluştur</button>
-                    <button onclick="window.location.href='mailto:info@onscala.com'" class="px-8 py-4 glass-2026 rounded-full font-bold text-sm uppercase tracking-widest text-white hover:!border-white" id="cta-btn2">İletişime Geç</button>
+                    <button onclick="openModal()" class="px-8 py-4 glass-2026 rounded-full font-bold text-sm uppercase tracking-widest text-white hover:!border-brand-primary hover:text-brand-primary transition-all" id="cta-btn2">İletişime Geç</button>
                 </div>
             </div>
         </section>
@@ -475,16 +497,16 @@
             <div>
                 <h4 class="text-white font-bold uppercase tracking-widest text-xs mb-6" data-i18n="footer.col1">Platformlar</h4>
                 <ul class="space-y-3 text-slate-500 text-sm font-light">
-                    <li><a href="#" class="hover:text-brand-primary">Havacılık ve Uzay</a></li>
-                    <li><a href="#" class="hover:text-brand-primary">Deniz Sistemleri</a></li>
-                    <li><a href="#" class="hover:text-brand-primary">Kara ve Zırhlı Araçlar</a></li>
-                    <li><a href="#" class="hover:text-brand-primary">Silah ve Mühimmat Modelleri</a></li>
+                    <li><a href="#modeller" onclick="setActiveCategory('hava')" class="hover:text-brand-primary">Havacılık ve Uzay</a></li>
+                    <li><a href="#modeller" onclick="setActiveCategory('deniz')" class="hover:text-brand-primary">Deniz Sistemleri</a></li>
+                    <li><a href="#modeller" onclick="setActiveCategory('kara')" class="hover:text-brand-primary">Kara ve Zırhlı Araçlar</a></li>
+                    <li><a href="#modeller" onclick="setActiveCategory('vip')" class="hover:text-brand-primary">VIP & Sanatsal Modeller</a></li>
                 </ul>
             </div>
             <div>
                 <h4 class="text-white font-bold uppercase tracking-widest text-xs mb-6" data-i18n="footer.col2">Kurumsal</h4>
                 <ul class="space-y-3 text-slate-500 text-sm font-light">
-                    <li><a href="#" class="hover:text-brand-primary">Hakkımızda & Vizyon</a></li>
+                    <li><a href="#hakkimizda" class="hover:text-brand-primary">Hakkımızda & Vizyon</a></li>
                     <li><a href="#referanslar" class="hover:text-brand-primary">Referanslar & Projeler</a></li>
                     <li><a href="#sss" class="hover:text-brand-primary">KVKK, NDA & SSS</a></li>
                 </ul>
@@ -492,8 +514,8 @@
             <div>
                 <h4 class="text-white font-bold uppercase tracking-widest text-xs mb-6" data-i18n="footer.col3">İletişim Portalı</h4>
                 <p class="text-slate-500 text-sm mb-4">info@onscala.com</p>
-                <button onclick="window.location.href='mailto:info@onscala.com'" class="border border-brand-primary/50 text-brand-primary px-4 py-2 rounded text-xs font-mono uppercase tracking-widest hover:bg-brand-primary hover:text-black transition-colors">
-                    E-Posta Gönder
+                <button onclick="openModal()" class="border border-brand-primary/50 text-brand-primary px-4 py-2 rounded text-xs font-mono uppercase tracking-widest hover:bg-brand-primary hover:text-black transition-colors w-max">
+                    <span data-i18n="nav.quote">Teklif İste</span>
                 </button>
             </div>
         </div>
@@ -505,7 +527,7 @@
         </div>
     </footer>
 
-    <!-- Quote Modal -->
+    <!-- Quote Modal Form (KVKK & NDA) -->
     <div id="quote-modal" class="fixed inset-0 z-[100] hidden items-center justify-center p-4 bg-brand-bg/80 backdrop-blur-md overflow-y-auto">
         <div class="glass-2026 w-full max-w-3xl relative !border-brand-primary/50 shadow-[0_0_50px_rgba(34,197,94,0.15)] my-auto animate-in fade-in zoom-in-95" onclick="event.stopPropagation()">
             <div class="border-b border-white/10 px-6 py-6 md:px-10 md:py-8 flex justify-between items-start">
@@ -558,7 +580,7 @@
 
                 <div class="flex justify-end gap-4">
                     <button type="button" onclick="closeModal()" class="px-6 py-3 text-slate-400 font-bold text-xs uppercase tracking-widest hover:text-white" id="btn-cancel">İptal</button>
-                    <button type="submit" class="px-8 py-3 bg-brand-primary text-black rounded-lg font-black text-xs uppercase tracking-widest shadow-[0_0_20px_rgba(34,197,94,0.3)]" id="btn-submit">Gönder</button>
+                    <button type="submit" class="px-8 py-3 bg-brand-primary text-black rounded-lg font-black text-xs uppercase tracking-widest shadow-[0_0_20px_rgba(34,197,94,0.3)] hover:scale-105 transition-transform" id="btn-submit">Gönder</button>
                 </div>
             </form>
         </div>
@@ -566,12 +588,14 @@
 
     <!-- Logic & Data -->
     <script>
-        // --- TRANSLATIONS DATA ---
+        // --- TRANSLATIONS & 20 FAQ ITEMS DATA ---
         const translations = {
           tr: {
-            nav: { models: "Modeller", exhibition: "Fuar Çözümleri", engineering: "Mühendislik", faq: "SSS", catalog: "Katalog İndir", quote: "Teklif İste" },
+            seo: { title: "OnScala. | Scale to 1:1", desc: "Aselsan, Havelsan ve ASFAT gibi kurumlara askeri maket, fuar modeli ve 1:1 ölçekli savunma sanayii prototipleri üretiyoruz." },
+            nav: { about: "Hakkımızda", models: "Modeller", exhibition: "Fuar Çözümleri", engineering: "Mühendislik", faq: "SSS", catalog: "Katalog İndir", quote: "Teklif İste" },
             hero: { precision: "1/100 MİLİMETRİK HASSASİYET", title1: "GERÇEĞİNİN", title2: "KUSURSUZ", title3: "İZDÜŞÜMÜ.", desc: "Savunma sanayiinin öncü firmaları için hava, deniz ve kara sistemlerinin fuar odaklı dev maketlerini ve VIP promosyon modellerini üretiyoruz.", btnPrimary: "Üretimlere Göz At", btnSecondary: "Tanıtım Filmi", renderStatus: "[ GERÇEK ZAMANLI 3D RENDER ]", tolerance: "Tolerans", local: "Yerlilik" },
             refs: { title: "STRATEJİK PARTNERLERİMİZ", subtitle: "Türk Savunma Sanayisinin Gururlarına Hizmet Ediyoruz" },
+            about: { tag: "Hakkımızda", title: "Mühendisliğin Sanatla Buluştuğu Nokta.", experience: "Yıllık Derin Tecrübe", satisfaction: "%100 Müşteri Memnuniyeti", p1: "OnScala, savunma sanayii ve endüstriyel platformlar için yüksek hassasiyetli maket ve prototip üretimi yapan, stratejik bir mühendislik ve tasarım merkezidir. Askeri standartlara uygun, kapalı devre ağlarda yürüttüğümüz şeffaf ve güvenilir üretim altyapımızla sektörün öncülerine hizmet veriyoruz.", p2: "Gerçek mühendislik verilerini (CAD), sanatsal bir dokunuşla fiziksel objelere dönüştürüyor, global vitrinlerde gücünüzü 1:1 ölçeğe kadar eksiksiz temsil etmenizi sağlıyoruz.", mission: { title: "Misyonumuz", desc: "Mühendislik verilerini estetikle harmanlayarak, müşterilerimizin global arenadaki temsil gücünü maksimize eden, kusursuz ve etkileyici model çözümleri sunmak." }, vision: { title: "Vizyonumuz", desc: "Savunma sanayii prototipleme ve maket üretiminde, yenilikçi teknolojilerimiz ve tavizsiz kalite anlayışımızla dünyada akla gelen ilk referans noktası olmak." } },
             showcase: { tag: "Platform Çözümleri", title: "Hizmet Ettiğimiz Sektörler", status: "AKTİF SİSTEM", models: "Modelleri" },
             scData: {
                 hava: { title: "HAVACILIK & UZAY", sub: "Aerodinamik Mükemmellik", desc: "İHA, SİHA ve 5. nesil savaş uçakları sergi modelleri.", specs: [["Ölçek", "1:10 - 1:72"], ["Materyal", "Kompozit / Reçine"], ["Detay", "Mühimmat & Kokpit"], ["Ağırlık", "Optimize"]], icon: "fa-plane" },
@@ -579,26 +603,44 @@
                 kara: { title: "KARA & ZIRHLI ARAÇLAR", sub: "Ağır Taktiksel Platformlar", desc: "Ana muharebe tankları ve zırhlı araçlar için gerçekçi dokular.", specs: [["Ölçek", "1:16 - 1:35"], ["Materyal", "Metal / Reçine"], ["Detay", "Hareketli Taret"], ["Boya", "Taktik Kamuflaj"]], icon: "fa-shield-halved" },
                 vip: { title: "VIP & SANATSAL MODELLER", sub: "Kişiye Özel Tasarımlar", desc: "Protokol ve partnerleriniz için ahşap/pirinç detaylı sanat eserleri.", specs: [["Kategori", "Özel Üretim"], ["Materyal", "Maun / Pirinç"], ["Sunum", "Ahşap Kaide"], ["Ambalaj", "VIP Kasa"]], icon: "fa-award" }
             },
-            pipeline: { tag: "Üretim Prosesi", title: "Veriden Fiziksel Gerçekliğe", steps: [{ t: "CAD Analizi", d: "3D datanın optimizasyonu.", i: "fa-microchip" }, { t: "Katmanlı Üretim", d: "SLA/SLS ve CNC üretim.", i: "fa-layer-group" }, { t: "Montaj & Mekanik", d: "Motor ve aydınlatma entegrasyonu.", i: "fa-cogs" }, { t: "Taktik Boya", d: "MIL-SPEC renklerinde boyama.", i: "fa-bullseye" }] },
+            pipeline: { tag: "Üretim Prosesi", title: "Veriden Fiziksel Gerçekliğe", steps: [{ t: "CAD Analizi", d: "NDA kapsamındaki 3D dataların optimizasyonu.", i: "fa-microchip" }, { t: "Katmanlı Üretim", d: "Mikron hassasiyetli SLA/SLS ve CNC üretimi.", i: "fa-layer-group" }, { t: "Montaj & Mekanik", d: "Motorize sistemler ve aydınlatma entegrasyonu.", i: "fa-cogs" }, { t: "Taktik Boya", d: "MIL-SPEC renklerinde boyama ve eskitme.", i: "fa-bullseye" }] },
             bento: {
-                fuar: { tag: "Kurumsal Temsil", title: "Fuar Alanınızı Komuta Merkezine Çevirin.", desc: "IDEF gibi fuarlarda 1:1 mock-uplar.", items: ["Motorize sistemler", "Kokpit aydınlatması", "Flight Case"], link: "Fuar Portfolyosu" },
-                promo: { tag: "VIP & Promosyon", title: "Akılda Kalıcı Taktiksel Hediyeler.", desc: "Masaüstü maketler ve şık sunumlar.", items: ["Modüler tasarımlar", "Lazer kazıma", "VIP Kutu"], link: "Promosyon Kataloğu" }
+                fuar: { tag: "Kurumsal Temsil", title: "Fuar Alanınızı Komuta Merkezine Çevirin.", desc: "IDEF, SAHA EXPO gibi fuarlarda ziyaretçileri büyüleyin. 1:1 ölçekli mock-uplara uzanan anahtar teslim çözümler.", items: ["Motorize sistemler", "Kokpit aydınlatması", "Flight Case Uçuş Sandıkları"], link: "Fuar Portfolyosu" },
+                promo: { tag: "VIP & Promosyon", title: "Akılda Kalıcı Taktiksel Hediyeler.", desc: "Bakanlık yetkilileri veya partnerleriniz için özel tasarım masaüstü maketler.", items: ["Modüler tasarımlar", "Lazer kazıma", "VIP Kutu Üretimi"], link: "Promosyon Kataloğu" }
             },
-            whyUs: { tag: "FARKIMIZ", title: "Neden Bizimle Çalışmalısınız?", sub: "En güvenilir mühendislik partneriniziz.", cards: [{ t: "Askeri Gizlilik", d: "Air-gapped NDA işleme.", i: "fa-lock" }, { t: "Mikron Hassasiyeti", d: "Endüstriyel 3D/CNC üretim.", i: "fa-crosshairs" }, { t: "Anahtar Teslim", d: "Tasarımdan stand kurulumuna.", i: "fa-layer-group" }, { t: "Zamanında Teslimat", d: "Kritik takvimler için 7/24.", i: "fa-clock" }] },
-            faq: { tag: "Bilgi Bankası & Güvenlik", title: "Sıkça Sorulan Sorular", items: [
-                { q: "Tecrübeniz nedir?", a: "ASELSAN, HAVELSAN gibi kurumlara %100 memnuniyetle hizmet verdik." },
-                { q: "NDA süreciniz nasıl?", a: "Tüm verileriniz askeri NDA ile korunur ve izinsiz paylaşılamaz." },
-                { q: "Teslimat ne kadar sürer?", a: "VIP için 2-4 hafta, dev fuar modelleri için 6-12 haftadır." },
-                { q: "Boya kalitesi nasıldır?", a: "Gerçek MIL-SPEC kodlarında boyama ve eskitme yapılır." }
+            whyUs: { tag: "FARKIMIZ", title: "Neden Bizimle Çalışmalısınız?", sub: "Sadece bir maket üreticisi değil, projelerinizin lansman sürecindeki en güvenilir mühendislik partneriniziz.", cards: [{ t: "Askeri Gizlilik", d: "Verileriniz Air-gapped sistemlerde işlenir, yetkisiz erişimler engellenir.", i: "fa-lock" }, { t: "Mikron Hassasiyeti", d: "Endüstriyel 3D/CNC üretim altyapımızla hata payını sıfıra indiriyoruz.", i: "fa-crosshairs" }, { t: "Anahtar Teslim Çözüm", d: "Tasarım aşamasından, üretim ve fuar alanındaki stant kurulumuna kadar tam hizmet.", i: "fa-layer-group" }, { t: "Zamanında Teslimat", d: "Kritik lansman takvimleriniz için 7/24 çalışma garantisi ve kriz yönetimi.", i: "fa-clock" }] },
+            faq: { tag: "Bilgi Bankası & Güvenlik", title: "Sıkça Sorulan Sorular", desc: "Süreçlerimiz hakkında detaylı bilgiye, gizlilik prensiplerimize ve üretim metodolojilerimize buradan ulaşabilirsiniz.", items: [
+                { q: "Savunma sanayii odaklı üretimde tecrübeniz nedir?", a: "Sektörde 10 yılı aşkın köklü bir üretim deneyimine sahibiz. Bugüne kadar ASELSAN, HAVELSAN, ASFAT gibi öncü kurumlara yüzlerce projeyi eksiksiz teslim ettik." },
+                { q: "Gizlilik Sözleşmesi (NDA) süreciniz nasıl işliyor?", a: "Savunma sanayiinin temel prensibi olan gizliliğe tavizsiz uyuyoruz. Proje öncesi askeri standartlarda çok taraflı NDA imzalanır. Hiçbir veri izniniz dışında paylaşılamaz." },
+                { q: "3D CAD datalarımız ve teknik çizimlerimiz nasıl korunuyor?", a: "Müşterilerimize ait teknik çizimler, internet bağlantısı olmayan kapalı devre iş istasyonlarında işlenmektedir. Dışarıdan veya içeriden izinsiz erişim imkansızdır." },
+                { q: "Veriler KVKK ve GDPR kapsamında nasıl güvence altında?", a: "Kurumsal bilgiler ve iletişim dataları şifrelenmiş sunucularda saklanır, uluslararası GDPR ve KVKK yönergelerine tam uyumluluk sağlanır." },
+                { q: "Proje bitiminde teknik datalar kalıcı olarak siliniyor mu?", a: "Teslimat sonrası aksi talep edilmedikçe, tarafımıza iletilen tüm CAD dataları DoD 5220.22-M standartlarında geri döndürülemez şekilde sistemlerimizden imha edilir." },
+                { q: "Hangi üretim teknolojilerini kullanıyorsunuz?", a: "Endüstriyel SLA/SLS 3D baskı, 5 eksen CNC ve lazer kazıma ünitelerini yüksek üretim kalitesi için entegre kullanıyoruz." },
+                { q: "Modellerde hangi hammaddeler tercih ediliyor?", a: "Alüminyum, karbon fiber, dayanıklı poliüretan reçine ve sergi kaideleri için birinci sınıf maun/ceviz ahşap kullanıyoruz." },
+                { q: "Gerçek askeri renk (MIL-SPEC/RAL) kodlarında boyama yapıyor musunuz?", a: "Evet, talep edilen MIL-SPEC veya NATO RAL kodlarındaki taktik boyalarla %100 eşleşme, kamuflaj ve eskitme efektleri yapıyoruz." },
+                { q: "Hangi ölçek aralıklarında üretim yapıyorsunuz?", a: "1:350 ölçek devriye botlarından başlayıp, fuarlar için 1:1 gerçek boyutlu (Mock-up) mühimmat üretimlerine kadar her ölçekte üretim sağlıyoruz." },
+                { q: "Fuar maketlerine motorize (hareketli) sistemler eklenebiliyor mu?", a: "Radar antenleri, hareketli pervaneler ve mekanik taret sistemleri fuar maketlerine profesyonelce entegre edilebilmektedir." },
+                { q: "İç aydınlatma (LED/OLED) entegrasyonu mümkün mü?", a: "Fiber optik aydınlatmalar, LED güverte ışıkları ve kokpit içerisindeki kontrol paneli aydınlatmaları ustalıkla uygulanmaktadır." },
+                { q: "Büyük modellerin lojistiği nasıl güvenle sağlanıyor?", a: "Darbe emici süngerlere sahip, özel üretim alüminyum tekerlekli kasalar (Flight Case) üreterek dünyanın her yerine güvenli lojistik sağlıyoruz." },
+                { q: "Uluslararası fuarlarda kurulum desteği veriyor musunuz?", a: "IDEF, SAHA EXPO, DSEI gibi fuarlarda bizzat teknik ekibimiz standınıza gelerek maketin kurulumunu yapar ve destek sağlar." },
+                { q: "Büyük fuar maketleri için ortalama üretim süresi nedir?", a: "Projenin hareketli parça sayısı ve detaylarına bağlı olarak üretim 6 ila 12 hafta sürmektedir." },
+                { q: "Masaüstü VIP promosyon ürünleri ne kadar sürede hazır olur?", a: "Özel VIP hediyelikler, logolu ve özel kutularında 2 ila 4 hafta arasında üretilip teslim edilir." },
+                { q: "VIP masaüstü maketler için minimum sipariş (MOQ) var mı?", a: "Üst düzey protokol için tek 1 adet üretim de yapabiliyor, seri üretim bantlarımızla binlerce adetlik ürün de sağlayabiliyoruz." },
+                { q: "Üretim sürecini takip edip revizyon verebilir miyiz?", a: "Her aşamada (3D veri onayı, ham baskı, boya aşaması) size ara raporlar sunulur ve onayınız alınarak ilerlenir." },
+                { q: "Teslimat sonrası bakım onarım garantisi var mı?", a: "Fuar kurulumlarında veya nakliyede oluşabilecek olası hasarlar için atölyemizden bakım-onarım ve yedek parça garantisi veriyoruz." },
+                { q: "Acil projeler için (Expedited) üretim seçeneğiniz var mı?", a: "Kritik lansmanlar için atölyemizde yer alan 'Öncelikli Üretim Hattı' ile 7/24 mesai yaparak acil projeleri tamamlayabiliyoruz." },
+                { q: "Neden diğer üreticileri değil de OnScala'yı tercih etmeliyiz?", a: "10 yıllık kusursuz tecrübemiz, gizlilik (NDA) etiğimiz, materyal kalitemiz ve vizyonumuzla biz sadece bir üretici değil, firmanızın stratejik partneriyiz." }
             ]},
-            cta: { t1: "Projenizi", t2: "Başlatalım", desc: "Mühendislerimiz 24 saat içinde fizibilite raporlasın.", btn1: "Üretim Talebi Oluştur", btn2: "İletişime Geç" },
+            cta: { t1: "Projenizi", t2: "Başlatalım", desc: "Sisteme giriş yapın. Uzman mühendislerimiz fizibiliteyi 24 saat içinde tarafınıza raporlasın.", btn1: "Üretim Talebi Oluştur", btn2: "İletişime Geç" },
             footer: { desc: "Askeri model üretim merkezi. Ankara, TR.", col1: "Platformlar", col2: "Kurumsal", col3: "İletişim", rights: "VERİ: 2026 // ONSCALA. // TÜM HAKLARI SAKLIDIR." },
             form: { t: "ÜRETİM TALEBİ OLUŞTUR", s: "Detayları paylaşın, uzmanlarımız dönüş yapsın.", typeOpt: ["Fuar Maketi", "VIP Promosyon", "1:1 Ölçek", "Diğer"], name: "Ad Soyad *", comp: "Firma *", email: "E-Posta *", type: "Proje Tipi *", detail: "Detaylar *", nda: "Gizlilik Sözleşmesi (NDA) talep ediyorum.", kvkk: "KVKK metnini okudum.", submit: "Gönder", cancel: "İptal" }
           },
           en: {
-            nav: { models: "Models", exhibition: "Exhibitions", engineering: "Engineering", faq: "FAQ", catalog: "Download Catalog", quote: "Get a Quote" },
+            seo: { title: "OnScala. | Scale to 1:1", desc: "We produce military scale models, exhibition mock-ups, and 1:1 scale defense industry prototypes for organizations like Aselsan, Havelsan, and ASFAT." },
+            nav: { about: "About Us", models: "Models", exhibition: "Exhibitions", engineering: "Engineering", faq: "FAQ", catalog: "Download Catalog", quote: "Get a Quote" },
             hero: { precision: "1/100 MILLIMETRIC PRECISION", title1: "FLAWLESS", title2: "PROJECTION", title3: "OF REALITY.", desc: "We manufacture giant mock-ups and VIP models of air, naval, and land systems for pioneer defense companies.", btnPrimary: "Explore", btnSecondary: "Promo Video", renderStatus: "[ REAL-TIME RENDER ]", tolerance: "Tolerance", local: "Domestic" },
             refs: { title: "STRATEGIC PARTNERS", subtitle: "Serving the Pride of the Defense Industry" },
+            about: { tag: "About Us", title: "Where Engineering Meets Art.", experience: "Years of Deep Experience", satisfaction: "100% Customer Satisfaction", p1: "OnScala is a strategic engineering and design center based in Ankara, producing high-precision scale models and prototypes for the defense industry and industrial platforms. We serve industry leaders with our transparent and reliable infrastructure operated in air-gapped networks in accordance with military standards.", p2: "We transform real engineering data (CAD) into physical objects with an artistic touch, ensuring that you fully represent your power on global stages up to a 1:1 scale.", mission: { title: "Our Mission", desc: "To provide flawless model solutions that maximize our clients' representation power in the global arena by blending engineering data with aesthetics." }, vision: { title: "Our Vision", desc: "To be the ultimate global reference point in defense industry prototyping and scale model manufacturing through uncompromising quality." } },
             showcase: { tag: "Platform Solutions", title: "Sectors We Serve", status: "ACTIVE SYSTEM", models: "Models" },
             scData: {
                 hava: { title: "AEROSPACE", sub: "Aerodynamic Excellence", desc: "Premium models of UAVs and fighters.", specs: [["Scale", "1:10 - 1:72"], ["Material", "Composite"], ["Detail", "Cockpit"], ["Weight", "Optimized"]], icon: "fa-plane" },
@@ -606,17 +648,33 @@
                 kara: { title: "LAND VEHICLES", sub: "Heavy Tactical", desc: "Main battle tanks with active suspension.", specs: [["Scale", "1:16 - 1:35"], ["Material", "Metal/Resin"], ["Detail", "Turret"], ["Paint", "Camo"]], icon: "fa-shield-halved" },
                 vip: { title: "VIP & ART", sub: "Tailor-Made", desc: "Unique desktop artworks with mahogany.", specs: [["Category", "Custom"], ["Material", "Mahogany/Brass"], ["Base", "Wood"], ["Box", "VIP Crate"]], icon: "fa-award" }
             },
-            pipeline: { tag: "Process", title: "Data to Reality", steps: [{ t: "CAD Analysis", d: "Optimizing 3D data.", i: "fa-microchip" }, { t: "Additive Mfg.", d: "SLA/SLS and CNC.", i: "fa-layer-group" }, { t: "Assembly", d: "Motors and LED.", i: "fa-cogs" }, { t: "Paint", d: "MIL-SPEC coating.", i: "fa-bullseye" }] },
+            pipeline: { tag: "Process", title: "Data to Reality", steps: [{ t: "CAD Analysis", d: "Optimizing NDA protected 3D data.", i: "fa-microchip" }, { t: "Additive Mfg.", d: "SLA/SLS and CNC.", i: "fa-layer-group" }, { t: "Assembly", d: "Motors and LED.", i: "fa-cogs" }, { t: "Paint", d: "MIL-SPEC coating.", i: "fa-bullseye" }] },
             bento: {
                 fuar: { tag: "Exhibition", title: "Turn Your Booth into a Command Center.", desc: "Fascinate visitors at global exhibitions.", items: ["Motorized systems", "Cockpit lighting", "Flight Cases"], link: "Portfolio" },
                 promo: { tag: "Promotion", title: "Memorable Tactical Gifts.", desc: "Desktop models for foreign delegations.", items: ["Modular designs", "Laser engraving", "VIP Box"], link: "Catalog" }
             },
-            whyUs: { tag: "DIFFERENCE", title: "Why Work With Us?", sub: "We are your reliable strategic partner.", cards: [{ t: "Military Secrecy", d: "Air-gapped NDA.", i: "fa-lock" }, { t: "Precision", d: "1/100 micron CNC.", i: "fa-crosshairs" }, { t: "Turn-Key", d: "Design to install.", i: "fa-layer-group" }, { t: "On-Time", d: "24/7 operations.", i: "fa-clock" }] },
-            faq: { tag: "Knowledge Base", title: "FAQ", items: [
-                { q: "Experience?", a: "We delivered hundreds of projects to ASELSAN, HAVELSAN." },
-                { q: "NDA Process?", a: "Data is secured under military standard NDAs." },
-                { q: "Delivery Time?", a: "2-4 weeks for VIP, 6-12 weeks for giant models." },
-                { q: "Paint Quality?", a: "Real MIL-SPEC colors and weathering applied." }
+            whyUs: { tag: "DIFFERENCE", title: "Why Work With Us?", sub: "We are your most reliable strategic and engineering partner.", cards: [{ t: "Military Secrecy", d: "Your data is processed in air-gapped systems.", i: "fa-lock" }, { t: "Precision", d: "1/100 micron CNC and 3D printing infrastructure.", i: "fa-crosshairs" }, { t: "Turn-Key Solutions", d: "End-to-end service from design to booth installation.", i: "fa-layer-group" }, { t: "On-Time Delivery", d: "24/7 operations for your critical deadlines.", i: "fa-clock" }] },
+            faq: { tag: "Knowledge Base & Security", title: "FAQ", desc: "You can find detailed information about our processes and confidentiality principles here.", items: [
+                { q: "What is your experience in defense industry production?", a: "We have over 10 years of deep-rooted production experience in the sector. We have flawlessly delivered hundreds of projects to leading organizations such as ASELSAN, HAVELSAN, and ASFAT." },
+                { q: "How does your Non-Disclosure Agreement (NDA) process work?", a: "Before project discussions begin, a multi-party NDA at military standards is signed. No project details or data can be shared with 3rd parties without your explicit permission." },
+                { q: "How are our 3D CAD data and technical drawings protected?", a: "Technical drawings belonging to our clients are processed on closed-circuit workstations with no internet connection. Internal access is strictly limited." },
+                { q: "How are personal and corporate data secured under GDPR/KVKK?", a: "All personal/corporate information is stored on encrypted private servers and undergoes periodic cybersecurity audits in accordance with GDPR." },
+                { q: "Is technical data permanently deleted after project delivery?", a: "Yes. Unless you request archiving, all CAD data and render files are irreversibly destroyed from our systems according to DoD 5220.22-M wipe standards." },
+                { q: "What production technologies and machinery do you use?", a: "We integrate Industrial SLA/SLS 3D printing parks, 5-axis CNC machining centers, and laser cutting/engraving units." },
+                { q: "What raw materials are preferred in the models?", a: "We use aerospace-grade aluminum, carbon fiber composites, industrial polyurethane resins, and premium mahogany/walnut wood for exhibition bases." },
+                { q: "Can you paint in real military color (MIL-SPEC/RAL) codes?", a: "Absolutely. Tactical paints in requested MIL-SPEC or NATO RAL codes are procured to ensure a 100% color match, including weathering effects." },
+                { q: "What scale ranges do you have the capacity to produce?", a: "We can produce anything from 1:350 scale patrol boats to 1:1 real-size (Mock-up) missile and ammunition systems." },
+                { q: "Can motorized (moving) systems be added to exhibition models?", a: "Yes. We can integrate rotating radar antennas, spinning helicopter/plane propellers, and moving turret mechanisms into exhibition models." },
+                { q: "Is in-cockpit lighting and digital screen (LCD/OLED) integration possible?", a: "We can provide realistic simulations with fiber optic lighting, LED deck lights, and working screens inside cockpits." },
+                { q: "How is the logistics of the giant models provided safely?", a: "We produce special Flight Cases with aluminum frames, wheels, and shock-absorbing sponges for safe worldwide transport." },
+                { q: "Do you provide installation and technical support at international fairs?", a: "Our technical team personally comes to your booth and installs the model at giant fairs like IDEF, DSEI, and SAHA Expo." },
+                { q: "What is the average production time for large exhibition models?", a: "Depending on the size of the model and moving parts, it usually ranges from 6 to 12 weeks." },
+                { q: "How does the process work for desktop promotional and VIP products?", a: "We do boutique production between 2 to 4 weeks for VIP models. We present them ready for delivery in custom wooden boxes." },
+                { q: "Is there a minimum order quantity (MOQ) for VIP models?", a: "We can produce a single special VIP piece, or produce thousands of fleet gifts thanks to our mass production techniques." },
+                { q: "Can we track the production process and request revisions?", a: "We provide you with visual reporting at every main phase of production (3D CAD approval, Raw Printing, Paint) for your feedback." },
+                { q: "Do you have warranty, maintenance, and repair services after delivery?", a: "In the event of any damage during cargo or fair installations, our workshop provides a repair warranty and spare parts support." },
+                { q: "Do you have an expedited production option?", a: "For urgent needs, we have a 'Priority Production Line' working 24/7 without affecting the current production line." },
+                { q: "Why should we choose OnScala over other manufacturers?", a: "Our 10 years of sector experience, 100% loyalty to NDA ethics, military standard materials, and prestigious references make us your strategic partner." }
             ]},
             cta: { t1: "Start", t2: "Your Project", desc: "Our engineers will report feasibility in 24 hours.", btn1: "Create Request", btn2: "Contact Us" },
             footer: { desc: "Scale model production center. Ankara, TR.", col1: "Platforms", col2: "Corporate", col3: "Contact", rights: "DATA: 2026 // ONSCALA. // ALL RIGHTS RESERVED." },
@@ -630,16 +688,8 @@
         // --- DOM MANIPULATION ---
         function updateTexts() {
             const t = translations[currentLang];
-            document.querySelectorAll('[data-i18n]').forEach(el => {
-                const keys = el.getAttribute('data-i18n').split('.');
-                let val = t;
-                keys.forEach(k => val = val[k]);
-                if (val) el.innerHTML = val;
-            });
             
-            document.getElementById('lang-btn').innerText = currentLang === 'tr' ? 'EN' : 'TR';
-            document.getElementById('mobile-lang-btn').innerText = currentLang === 'tr' ? 'SWITCH TO EN' : 'TÜRKÇE GEÇİŞ';
-            
+            // Re-render complex sections first
             renderShowcaseTabs();
             renderShowcaseContent();
             renderPipeline();
@@ -648,6 +698,49 @@
             renderFAQ();
             renderCTA();
             renderForm();
+            updateSEO();
+
+            // Update all static attributes via data-i18n
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const keys = el.getAttribute('data-i18n').split('.');
+                let val = t;
+                keys.forEach(k => val = val ? val[k] : undefined);
+                if (val) el.innerHTML = val;
+            });
+            
+            document.getElementById('lang-btn').innerText = currentLang === 'tr' ? 'EN' : 'TR';
+            document.getElementById('mobile-lang-btn').innerText = currentLang === 'tr' ? 'SWITCH TO EN' : 'TÜRKÇE GEÇİŞ';
+        }
+
+        // --- SEO & JSON-LD UPDATE ---
+        function updateSEO() {
+            const t = translations[currentLang];
+            document.title = t.seo.title;
+            let metaDesc = document.querySelector('meta[name="description"]');
+            if (metaDesc) metaDesc.content = t.seo.desc;
+
+            // Update JSON-LD
+            const schemaData = {
+                "@context": "https://schema.org",
+                "@type": "ManufacturingBusiness",
+                "name": "OnScala Maket Sanayi",
+                "image": "https://onscala.com/logo.png",
+                "description": t.seo.desc,
+                "address": { "@type": "PostalAddress", "addressLocality": "Ankara", "addressCountry": "TR" },
+                "geo": { "@type": "GeoCoordinates", "latitude": "39.92077", "longitude": "32.85411" },
+                "url": "https://onscala.com",
+                "telephone": "+908500000000",
+                "priceRange": "$$$"
+            };
+
+            let scriptTag = document.getElementById('json-ld-schema');
+            if (!scriptTag) {
+                scriptTag = document.createElement('script');
+                scriptTag.id = 'json-ld-schema';
+                scriptTag.type = 'application/ld+json';
+                document.head.appendChild(scriptTag);
+            }
+            scriptTag.innerHTML = JSON.stringify(schemaData);
         }
 
         function renderShowcaseTabs() {
@@ -717,12 +810,12 @@
             document.getElementById('bento-fuar-tag').innerText = f.tag;
             document.getElementById('bento-fuar-title').innerText = f.title;
             document.getElementById('bento-fuar-desc').innerText = f.desc;
-            document.getElementById('bento-fuar-items').innerHTML = f.items.map(i => `<li class="flex items-center gap-2 text-xs text-slate-300 font-light"><i class="fas fa-check-circle text-brand-primary"></i> ${i}</li>`).join('');
+            document.getElementById('bento-fuar-items').innerHTML = f.items.map(i => `<li class="flex items-start gap-2 text-xs text-slate-300 font-light"><i class="fas fa-check-circle text-brand-primary mt-1"></i> <span>${i}</span></li>`).join('');
             
             document.getElementById('bento-promo-tag').innerText = p.tag;
             document.getElementById('bento-promo-title').innerText = p.title;
             document.getElementById('bento-promo-desc').innerText = p.desc;
-            document.getElementById('bento-promo-items').innerHTML = p.items.map(i => `<li class="flex items-center gap-2 text-xs text-slate-300 font-light"><i class="fas fa-check-circle text-brand-secondary"></i> ${i}</li>`).join('');
+            document.getElementById('bento-promo-items').innerHTML = p.items.map(i => `<li class="flex items-start gap-2 text-xs text-slate-300 font-light"><i class="fas fa-check-circle text-brand-secondary mt-1"></i> <span>${i}</span></li>`).join('');
         }
 
         function renderWhyUs() {
@@ -743,15 +836,15 @@
             const items = translations[currentLang].faq.items;
             document.getElementById('faq-container').innerHTML = items.map((f, i) => `
                 <div class="faq-item glass-2026 !p-0 overflow-hidden border border-white/5">
-                    <button class="w-full p-5 text-left flex justify-between items-center focus:outline-none" onclick="this.parentElement.classList.toggle('active')">
-                        <div class="flex gap-4 items-center">
+                    <button class="w-full p-4 md:p-5 text-left flex justify-between items-center focus:outline-none" onclick="this.parentElement.classList.toggle('active')">
+                        <div class="flex gap-3 md:gap-4 items-center">
                             <span class="text-slate-700 font-mono text-xs hidden sm:block">${(i+1).toString().padStart(2,'0')}</span>
-                            <span class="font-bold text-sm text-slate-200">${f.q}</span>
+                            <span class="font-bold text-sm text-slate-200 pr-2">${f.q}</span>
                         </div>
                         <i class="fas fa-chevron-down text-slate-500 faq-icon transition-transform"></i>
                     </button>
                     <div class="faq-content">
-                        <div class="px-5 pb-5 text-slate-400 font-light text-sm sm:pl-12 border-t border-white/5 pt-3">${f.a}</div>
+                        <div class="px-4 md:px-5 pb-5 text-slate-400 font-light text-xs md:text-sm sm:pl-12 border-t border-white/5 pt-3">${f.a}</div>
                     </div>
                 </div>
             `).join('');
@@ -939,7 +1032,7 @@
         // Initialize App
         document.addEventListener('DOMContentLoaded', () => {
             updateTexts();
-            setTimeout(initThree, 100); // Wait for DOM layout
+            setTimeout(initThree, 100); 
         });
     </script>
 </body>
